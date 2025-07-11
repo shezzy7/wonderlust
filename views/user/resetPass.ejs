@@ -1,0 +1,17 @@
+<% layout("/layout/boilerplate") %>
+<div class="row mt-4 mb-3">
+  <div class="col-6 offset-3">
+    <h3>Reset Password</h3>
+    <form action="/isUser" method="POST">
+      <div class="mb-3">
+        <label for="username" class="form-label">Enter your username</label>
+        <input type="text" name="username" class="form-control" required>
+      </div>
+      <div class="mb-3">
+        <label for="username" class="form-label">Enter New Password</label>
+        <input type="text" name="password" class="form-control" required>
+      </div>
+      <button class="btn btn-primary">Next</button>
+    </form>
+  </div>
+</div>

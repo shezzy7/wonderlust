@@ -13,7 +13,7 @@ const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
       folder: 'wonderlust_DEV', //what should be the name of folder on clouds
-      allowedFormates: ["png","jpg","jpeg"], // types of files we support for our folder
+      allowedFormats: ["png","jpg","jpeg"], // types of files we support for our folder
      
     },
   });

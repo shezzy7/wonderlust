@@ -1,10 +1,10 @@
 // we save our secret codes or any secret info in our .env file.env file is a special type of file for using it we also to instal an np which is dotenv
 //for getting data from env we rquire it as require("dotenv").configh()
 //and for fetching any variable save in our .env file we write process.env.varName
-if(process.env.NODE_ENV!="production"){ //later we will be creating a variable in which we will be storing our level that whether we are working on production level or development level.And we will be using our env file only whene we will be in development level.
-    require("dotenv").config()
-}
-
+// if(process.env.NODE_ENV!="production"){ //later we will be creating a variable in which we will be storing our level that whether we are working on production level or development level.And we will be using our env file only whene we will be in development level.
+    
+// }
+require("dotenv").config()
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -52,7 +52,9 @@ app.listen(port,()=>{
 // main()
 
 // conecting database
-const Mongo_URL = process.env.MONGOATLAS;
+const Mongo_URL = process.env.ATLASDB_URL;
+console.log("mongo url")
+console.log(Mongo_URL)
 async function main() {
   try {
     await mongoose.connect(Mongo_URL, {
@@ -87,11 +89,12 @@ const sessionOptions = {
     //So if we go to express documentation and there go to cookie and see options that we can pass to cookies we will an option expires and maxAge.In these variables we can set time for which our cookie will store given data.Bydefult expiry date for cookies in maximum browsers is that when someone exits from browser then cookies are expired,but we can set our expiry date.
     //Here in our code we are setting an expiry date for our cookies for a week and for this purpose we have to send time in milliseconds.
     cookie:{
-        expires : Date.now()*7*24*60*60*1000, //here we are passing expiry date that from now to 7 days. 
+        expires : new Date(Date.now() + 7 * 24 * 60 * 60 * 1000), //here we are passing expiry date that from now to 7 days. 
         maxAge:7*24*60*60*1000,//in maxAge we pass the time passed above
         httpOnly : true
         //now if we to go our webpage and go to cookies there we will see an option named expires/maxAge inside this column our expiry date will be given.
     }
+
 }
 app.use(session(sessionOptions));
 app.use(flash());// we will use flash after using session and before using our routes
